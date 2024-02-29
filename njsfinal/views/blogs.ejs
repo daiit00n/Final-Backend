@@ -1,0 +1,132 @@
+<!-- blogs.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="navbar">
+    <ul>
+        <li><a href="/blogs">Blogs</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/exchange-rates">Exchange Rates</a></li>
+        <li><a href="/random-quote">Random Quote</a></li>
+    </ul>
+</div>
+
+<h1 id="blogs">Blogs</h1>
+
+<div id="lb">
+    <button class="language-button" onclick="toggleLanguage('en')">English</button>
+    <button class="language-button" onclick="toggleLanguage('ru')">Russian</button>
+</div>
+
+
+<!-- Blog Posts -->
+<div class="blog-container">
+    <% blogs.forEach(blogPost => { %>
+        <div class="blog-card">
+            <!-- Carousel for Images -->
+            <div id="carousel<%= blogPost._id %>" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <% blogPost.images.forEach((image, index) => { %>
+                        <div class="carousel-item<%= index === 0 ? ' active' : '' %>">
+                            <img src="<%= image %>" class="d-block w-100" alt="Slide <%= index + 1 %>">
+                        </div>
+                    <% }); %>
+                </div>
+                <a class="carousel-control-prev" href="#carousel<%= blogPost._id %>" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel<%= blogPost._id %>" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- English Title -->
+            <h2 class="title" data-lang="en" data-type="title"><%= blogPost.title %></h2>
+            <!-- Russian Title -->
+            <h2 class="title" data-lang="ru" data-type="title" style="display: none;"><%= blogPost.titleRu %></h2>
+            <!-- English Content -->
+            <p class="content" data-lang="en" data-type="content"><%= blogPost.content %></p>
+            <!-- Russian Content -->
+            <p class="content" data-lang="ru" data-type="content" style="display: none;"><%= blogPost.contentRu %></p>
+
+            <button onclick="like('<%= blogPost._id %>')">Like</button>
+            <!-- Dislike button -->
+            <button onclick="dislike('<%= blogPost._id %>')">Dislike</button>
+            <!-- Display likes and dislikes count -->
+            <p>Likes: <%= blogPost.likes %>, Dislikes: <%= blogPost.dislikes %></p>
+        </div>
+    <% }); %>
+</div>
+
+<div class="footer">
+    Anafin Damir, SE-2211
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function toggleLanguage(language) {
+        // Get all blog post elements
+        var blogPosts = document.querySelectorAll('.blog-card');
+        // Loop through each blog post element
+        blogPosts.forEach(function(post) {
+            // Find the corresponding language content based on the data attribute
+            var titleEl = post.querySelector('[data-lang="' + language + '"][data-type="title"]');
+            var contentEl = post.querySelector('[data-lang="' + language + '"][data-type="content"]');
+            // Show or hide content based on the chosen language
+            if (titleEl && contentEl) {
+                post.querySelectorAll('.title, .content').forEach(function(el) {
+                    el.style.display = 'none';
+                });
+                titleEl.style.display = 'block';
+                contentEl.style.display = 'block';
+            }
+        });
+    }
+    function like(blogId) {
+        fetch(`/blogs/like/${blogId}`, { method: 'POST' })
+            .then(response => {
+                if (response.ok) {
+                    // Refresh the page or update the UI
+                    location.reload(); // Refresh the page
+                } else {
+                    console.error('Failed to like blog:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error liking blog:', error);
+            });
+    }
+
+    function dislike(blogId) {
+        fetch(`/blogs/dislike/${blogId}`, { method: 'POST' })
+            .then(response => {
+                if (response.ok) {
+                    // Refresh the page or update the UI
+                    location.reload(); // Refresh the page
+                } else {
+                    console.error('Failed to dislike blog:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error disliking blog:', error);
+            });
+    }
+
+</script>
+</body>
+</html>

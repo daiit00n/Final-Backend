@@ -1,0 +1,38 @@
+<!-- welcome.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<% if (user) { %>
+    <div class="navbar">
+        <ul>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/exchange-rates">Exchange Rates</a></li>
+            <li><a href="/random-quote">Random Quote</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <!-- Content for authenticated users -->
+        <p class="welcome-text">Welcome, <strong><%= user.firstName %></strong>!</p>
+        <a href="/logout">Logout</a>
+    </div>
+<% } else { %>
+    <div class="container">
+        <!-- Content for non-authenticated users -->
+        <h1 class="welcome-text">Welcome to My Blog</h1>
+        <p>For full access to the content, please <a href="/login">log in</a>.</p>
+        <p>If you don't have an account, you can <a href="/register">register here</a>.</p>
+    </div>
+<% } %>
+<div class="footer">
+    Anafin Damir, SE-2211
+</div>
+</body>
+</html>

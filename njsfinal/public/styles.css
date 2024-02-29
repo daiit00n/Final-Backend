@@ -1,0 +1,246 @@
+/* styles.css */
+
+/* Body and general styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #343a40;
+    padding: 10px 0;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Welcome text styles */
+.welcome-text {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.welcome-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.welcome-text a:hover {
+    text-decoration: underline;
+}
+
+/* Login/Register form styles */
+.login-form {
+    margin-top: 20px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-form input[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#blogs{
+    margin: 10px;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333333;
+    text-align: center;
+}
+
+.blog-card h2 {
+    margin-bottom: 10px;
+    font-size: 18px; /* Increase font size */
+}
+
+.blog-card p {
+    margin-bottom: 15px;
+    font-size: 14px; /* Increase font size */
+}
+
+.blog-card img {
+    width: 100%; /* Make images responsive */
+    height: 200px; /* Adjust image height as needed */
+    object-fit: cover; /* Ensure images maintain aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 10px; /* Reduce margin */
+}
+
+
+/* Like and dislike button styles */
+.blog-card button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.blog-card button:hover {
+    background-color: #0056b3;
+}
+
+#lb{
+    text-align: center;
+}
+
+.language-button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Blog cards */
+.blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.blog-card {
+    width: calc(33.33% - 20px); /* 3 cards in a row with margin */
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Blog card title */
+.blog-card h2.title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Blog card content */
+.blog-card p.content {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* styles.css */
+
+/* Positioning for forms */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 20px;
+}
+
+.form-container form {
+    margin-bottom: 20px;
+}
+
+/* Adjust form inputs */
+.form-container input[type="text"],
+.form-container textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Button styling */
+.form-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #0056b3;
+}
+
+.news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.news-container li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}

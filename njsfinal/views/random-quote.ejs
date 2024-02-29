@@ -1,0 +1,35 @@
+<!-- random-quote.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file -->
+</head>
+<body>
+<div class="navbar">
+    <ul>
+        <li><a href="/blogs">Blogs</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/exchange-rates">Exchange Rates</a></li>
+        <li><a href="/random-quote">Random Quote</a></li>
+    </ul>
+</div>
+<div class="container">
+    <h1>Random Quote of the Day</h1>
+    <div id="quote-container">
+        <% if (quote) { %>
+            <blockquote><%= quote.body %></blockquote>
+            <footer><%= quote.author %></footer>
+        <% } else { %>
+            <p>Error fetching quote</p>
+        <% } %>
+    </div>
+</div>
+<div class="footer">
+    Anafin Damir, SE-2211
+</div>
+</body>
+</html>
